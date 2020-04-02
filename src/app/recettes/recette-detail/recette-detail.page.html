@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/recettes"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ chargementRecette.title }}</ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="suppressionRecette()">
+        <ion-icon name="trash" slot="icon-only"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col no-padding>
+        <ion-img [src]="chargementRecette.imageUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-toolbar  color="tertiary">
+          <ion-buttons slot="start">
+            <ion-button>
+              <ion-icon name="cash"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Ingrédients </ion-title>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item  *ngFor="let ingred of chargementRecette.ingredients">
+            <ion-avatar slot="start"><ion-img [src]="ingred.avatar"></ion-img></ion-avatar>
+            <ion-label>{{ ingred.nom }} </ion-label>
+            <ion-note slot="end" color="primary">{{ ingred.quantite }}</ion-note>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-toolbar color="tertiary">
+          <ion-buttons slot="start">
+            <ion-button>
+              <ion-icon name="restaurant"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+          <ion-title>Préparation </ion-title>
+        </ion-toolbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <section >
+    <ion-text text-center>
+      <h5> {{ chargementRecette.desc }} </h5>
+    </ion-text>
+  </section>
+</ion-content>
